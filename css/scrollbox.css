@@ -5,22 +5,32 @@
 }
 
 .scrollbox_scrollbar {
-	background-color: silver;
-	border-left: solid black 1px;
+    background: #FFFFFF url(../img/scroll_fila.png) repeat-y;
 	height: 100%;
-	width: 20px;
+	width: 19px;
 }
 
 .scrollbox_up_button {
-	background: transparent url(../images/scroll_up_button.jpg) top right no-repeat;
-	height: 20px;
+	background: #FFFFFF url(../img/scroll_top.png) top right no-repeat;
+	height: 15px;
 }
 
-.scrollbox_down_button {
-	background: transparent url(../images/scroll_down_button.jpg) top right no-repeat;
+.scrollbox_down_button 
+{
+	background: #FFFFFF url(../img/scroll_bottom.png) top right no-repeat;
 	height: 20px;
 }
 
 .scrollbox_handle {
-	background-color: #33CC33;
+    background: #FFFFFF url(../img/scroll_boton.png) repeat-y;
+}
+
+.scrollbox_handle_top {
+    background: #FFFFFF url(../img/scroll_boton_top.png) no-repeat;
+	height: 4px;
+}
+
+.scrollbox_handle_bottom {
+    background: #FFFFFF url(../img/scroll_boton_bottom.png) no-repeat;
+	height: 4px;
 }
