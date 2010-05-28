@@ -50,7 +50,7 @@ Object.extend(ScrollBox.prototype, {
         Element.addClassName(this.scrollbar, 'scrollbox_scrollbar');
         this.element.appendChild(this.scrollbar);
         this.scrollbar.style.position = 'absolute';
-        this.scrollbar.style.top = '15';
+        this.scrollbar.style.top = '15px';
         this.scrollbar.style.right = '0';
 
         //Add down button
