@@ -184,9 +184,13 @@ Object.extend(ScrollBox.prototype, {
 
         if (this.opts.auto_hide) {
             if (this.handle_height == this.bar_height) {
+                this.up_button.style.visibility = 'hidden';
+                this.down_button.style.visibility = 'hidden';
                 this.scrollbar.style.visibility = 'hidden';
             }
             else {
+                this.up_button.style.visibility = '';
+                this.down_button.style.visibility = '';
                 this.scrollbar.style.visibility = '';
             }
         }
