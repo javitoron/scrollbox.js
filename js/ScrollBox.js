@@ -13,7 +13,6 @@ ScrollBox.JUMP_ACTION	= 2;	//Jump to the position on the bar that was clicked
 
 Object.extend(ScrollBox.prototype, {
     initialize: function(element, options) {
-
         this.element = element;
         Element.addClassName(this.element, 'scrollbox');
 
@@ -31,20 +30,13 @@ Object.extend(ScrollBox.prototype, {
         //Move content into content div
         this.content_div = document.createElement('div');
         Element.addClassName(this.content_div, 'scrollbox_content');
+        this.content_div.writeAttribute('id', this.element.id + '_scrollbox_content');
         $A(this.element.childNodes).each(function(n) { this.content_div.appendChild(n); } .bind(this));
         this.element.appendChild(this.content_div);
         this.content_div.style.overflow = 'hidden';
         this.content_div.style.height = '100%';
 
-        //Add up button
-        this.up_button = document.createElement('div');
-        Element.addClassName(this.up_button, 'scrollbox_up_button');
-        this.up_button.style.position = 'absolute';
-        this.up_button.style.width = '100%';
-        this.up_button.style.top = '0';
-        this.up_button.style.right = '0';
-        this.content_div.appendChild(this.up_button);
-
+        this.addUpButton();
         //Add scrollbar div to element
         this.scrollbar = document.createElement('div');
         Element.addClassName(this.scrollbar, 'scrollbox_scrollbar');
@@ -53,14 +45,7 @@ Object.extend(ScrollBox.prototype, {
         this.scrollbar.style.top = '15px';
         this.scrollbar.style.right = '0';
 
-        //Add down button
-        this.down_button = document.createElement('div');
-        Element.addClassName(this.down_button, 'scrollbox_down_button');
-        this.down_button.style.position = 'absolute';
-        this.down_button.style.width = '100%';
-        this.down_button.style.bottom = '0';
-        this.down_button.style.right = '0';
-        this.content_div.appendChild(this.down_button);
+        this.addDownButton();
 
         //Add Scroll Handle Top
         this.handleTop = document.createElement('div');
@@ -122,6 +107,26 @@ Object.extend(ScrollBox.prototype, {
         Event.observe(this.content_div, 'mousewheel', this.scrollWheel.bindAsEventListener(this), true);
         Event.observe(this.content_div, 'DOMMouseScroll', this.scrollWheel.bindAsEventListener(this), true);
 
+    },
+    addUpButton: function() {
+        //Add up button
+        this.up_button = document.createElement('div');
+        Element.addClassName(this.up_button, 'scrollbox_up_button');
+        this.up_button.style.position = 'absolute';
+        this.up_button.style.width = '100%';
+        this.up_button.style.top = '0';
+        this.up_button.style.right = '0';
+        this.content_div.appendChild(this.up_button);
+    },
+    addDownButton: function() {
+        //Add down button
+        this.down_button = document.createElement('div');
+        Element.addClassName(this.down_button, 'scrollbox_down_button');
+        this.down_button.style.position = 'absolute';
+        this.down_button.style.width = '100%';
+        this.down_button.style.bottom = '0';
+        this.down_button.style.right = '0';
+        this.content_div.appendChild(this.down_button);
     },
     scrollDown: function() {
         if (this.scroll_pos < this.scroll_max) {
@@ -192,6 +197,8 @@ Object.extend(ScrollBox.prototype, {
                 this.up_button.style.visibility = '';
                 this.down_button.style.visibility = '';
                 this.scrollbar.style.visibility = '';
+                this.content_div.appendChild(this.up_button);
+                this.content_div.appendChild(this.down_button);
             }
         }
 
@@ -240,8 +247,8 @@ Object.extend(ScrollBox.prototype, {
         //alert('sb: ' + this.scrollbar.offsetHeight + 'up: ' + this.up_button.offsetHeight + 'down: ' + this.down_button.offsetHeight)
         if (this.scrollbar.style.height == '') {
             //alert(this.scrollbar.style.height);
-            this.scrollbar.style.height = ( this.scrollbar.offsetHeight -
-            (this.up_button.offsetHeight + this.down_button.offsetHeight) ) + 'px';
+            this.scrollbar.style.height = (this.scrollbar.offsetHeight -
+            (this.up_button.offsetHeight + this.down_button.offsetHeight)) + 'px';
             //alert(this.scrollbar.style.height);
         }
         this.bar_height = this.scrollbar.offsetHeight -
