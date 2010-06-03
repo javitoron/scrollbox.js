@@ -199,6 +199,8 @@ Object.extend(ScrollBox.prototype, {
                 this.scrollbar.style.visibility = '';
                 this.content_div.appendChild(this.up_button);
                 this.content_div.appendChild(this.down_button);
+                this.bar_height = this.scrollbar.offsetHeight -
+                    (this.up_button.offsetHeight + this.down_button.offsetHeight);
             }
         }
 
