@@ -1,8 +1,8 @@
 .scrollbox {position: relative;}
 
 .scrollbox_content {
-	margin-right: 20px;
     background-color:Transparent;
+    position: relative;
 }
 
 .scrollbox_scrollbar {
@@ -10,15 +10,48 @@
     background: url(../img/scroll_fila.png) repeat-y;
 	height: 100%;
 	width: 19px;
+    position: absolute;
 }
 
 .scrollbox_up_button 
 {
     background-color:Transparent;
     background: url(../img/scroll_top.png) top right no-repeat;
+    position:absolute;
+    top:-15px;
+    right :0px;
 	height: 15px;
+	width:19px;
 }
 
+.scrollbox_down_button 
+{
+	background-color:Transparent;
+    background: url(../img/scroll_bottom.png) top right no-repeat;
+	height: 20px;
+    position:absolute;
+    bottom:-15px;
+    right :0px;
+	height: 15px;
+	width:19px;
+}
+
+.scrollbox_handle {
+    background: url(../img/scroll_boton.png) repeat-y;
+    background-color:Transparent;
+}
+
+.scrollbox_handle_top {
+    background: url(../img/scroll_boton_top.png) no-repeat;
+    background-color:Transparent;
+	height: 4px;
+}
+
+.scrollbox_handle_bottom {
+    background-color:Transparent;
+    background: url(../img/scroll_boton_bottom.png) no-repeat;
+	height: 4px;
+}
 .scrollbox_down_button 
 {
 	background-color:Transparent;
