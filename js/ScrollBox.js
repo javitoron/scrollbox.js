@@ -36,7 +36,7 @@ Object.extend(ScrollBox.prototype, {
         this.content_div.style.overflow = 'hidden';
         this.content_div.style.height = '100%';
 
-        this.addUpButton();
+
         //Add scrollbar div to element
         this.scrollbar = document.createElement('div');
         Element.addClassName(this.scrollbar, 'scrollbox_scrollbar');
@@ -44,8 +44,7 @@ Object.extend(ScrollBox.prototype, {
         this.scrollbar.style.position = 'absolute';
         this.scrollbar.style.top = '15px';
         this.scrollbar.style.right = '0';
-
-        this.addDownButton();
+        this.addUpButton();
 
         //Add Scroll Handle Top
         this.handleTop = document.createElement('div');
@@ -70,6 +69,8 @@ Object.extend(ScrollBox.prototype, {
         this.handleBottom.style.width = '100%';
         this.handleBottom.style.right = '0';
         this.scrollbar.appendChild(this.handleBottom);
+
+        this.addDownButton();
 
         //Setup State Info
         this.scroll_pos = 0;
@@ -112,21 +113,13 @@ Object.extend(ScrollBox.prototype, {
         //Add up button
         this.up_button = document.createElement('div');
         Element.addClassName(this.up_button, 'scrollbox_up_button');
-        this.up_button.style.position = 'absolute';
-        this.up_button.style.width = '100%';
-        this.up_button.style.top = '0';
-        this.up_button.style.right = '0';
-        this.content_div.appendChild(this.up_button);
+        this.scrollbar.appendChild(this.up_button);
     },
     addDownButton: function() {
         //Add down button
         this.down_button = document.createElement('div');
         Element.addClassName(this.down_button, 'scrollbox_down_button');
-        this.down_button.style.position = 'absolute';
-        this.down_button.style.width = '100%';
-        this.down_button.style.bottom = '0';
-        this.down_button.style.right = '0';
-        this.content_div.appendChild(this.down_button);
+        this.scrollbar.appendChild(this.down_button);
     },
     scrollDown: function() {
         if (this.scroll_pos < this.scroll_max) {
@@ -197,8 +190,8 @@ Object.extend(ScrollBox.prototype, {
                 this.up_button.style.visibility = '';
                 this.down_button.style.visibility = '';
                 this.scrollbar.style.visibility = '';
-                this.content_div.appendChild(this.up_button);
-                this.content_div.appendChild(this.down_button);
+                this.scrollbar.appendChild(this.up_button);
+                this.scrollbar.appendChild(this.down_button);
                 this.bar_height = this.scrollbar.offsetHeight -
                     (this.up_button.offsetHeight + this.down_button.offsetHeight);
             }
