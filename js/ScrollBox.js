@@ -151,6 +151,13 @@ Object.extend(ScrollBox.prototype, {
         this.scroll_pos = new_pos;
         this.updateHandle();
     },
+    scrollBottom: function() {
+        // console.log(new_pos, this.content_div);
+        new_pos = this.scroll_max;
+        this.content_div.scrollTop = new_pos;
+        this.scroll_pos = new_pos;
+        this.updateHandle();
+    },
     buttonDown: function(event, action) {
         action();
         this.timeout = setTimeout(function() {
